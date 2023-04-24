@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.4'
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'junit:junit:4.13.1'
+    compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//Swagger
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+	//JPA
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.7.4'
+	//MySQL
+	//implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
+	//ModelMapper
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
+	//H2
+	implementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+	//MapStruct
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+	//Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//Mockito
+	implementation group: 'org.mockito', name: 'mockito-core', version: '4.8.1'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
